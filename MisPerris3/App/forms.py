@@ -14,6 +14,10 @@ class AgregarUsuario(forms.Form):
     rol=forms.ChoiceField(choices=(('Normal', 'Normal'),('Admin','Admin'),),label="Rol del Usuario")
 
 
+
+
+
+
 class RegUsuario(forms.Form):
     correo=forms.EmailField(widget=forms.EmailInput(),label="Email")
     username=forms.CharField(widget=forms.TextInput(),label="Nombre de Usuario")
