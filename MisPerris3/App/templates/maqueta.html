@@ -1,0 +1,62 @@
+{% load staticfiles %}
+<html>
+    <head>
+        <link rel="stylesheet" href="{% static 'css/maqueta.css' %}">
+        <script src="{% static 'js/prefix.js' %}" type="test/javascript"></script>
+    </head>
+    <body>
+            <div class=contenedor>
+            <header>
+
+                <div class=logo>
+                    <img alt=""src="{% static 'images/logo.png' %}" width=150>
+                    <a href=#>MIS PERRIS</a>
+                </div>
+                
+                <nav>
+                    <a href=/#>Inicio</a>
+                    <a href=/#>Quienes Somos</a>
+                    <a href=/#>Servicios</a>
+                    <a href=/#>Contacto</a>
+                </nav>
+                
+                {% block header %}
+                {% endblock %}
+                
+                {% if request.user.is_authenticated %}
+                {% if user.is_staff %}
+                    <nav> 
+                        <a href="/mngrusr/">Gestionar Usuarios</a>
+                        <a href="/addusradmin/">Añadir Usuarios</a>
+                        <a href="/regpet/">Registrar Mascota</a>
+                        <a href="/mngrpet/">Gestionar Mascotas</a>
+                        <a href="/salir/">Cerrar Sesión</a>
+                    </nav>
+                {% else %}
+                    <nav>
+                        <a href="/adoptpet/">Adoptar</a>
+                        <a href="/salir/">Cerrar Sesión</a>
+                    </nav>
+                {% endif %}
+            {% else %}
+                <nav>
+                    <a href="/regusr/">Registrarse</a>
+                    <a href="/login/">Ingresar</a>
+                </nav>
+            {% endif %}
+            </header>
+                {% block principal %}
+                {% endblock %}
+            <footer>
+            {% block footer %}
+            {% endblock %}
+                <div class=validado>
+                <p>Desarrollo Web y Mobile -----By Thalita Aranda y Paloma Rodriguez-----</p>
+                
+                </div>
+            </footer>
+            </div>
+    </body>
+</html>
+
+

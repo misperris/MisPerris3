@@ -1,0 +1,13 @@
+{% extends 'maqueta.html' %}
+{% block principal %}
+<form method="post">
+    <h1>Recuperar Password</h1>
+    <br>
+    <br>
+    {% csrf_token %}
+    {{ form.as_p }}
+    <br>
+    <br>
+    <input type="submit" value="Enviar" class="send">
+</form>
+{% endblock %}
